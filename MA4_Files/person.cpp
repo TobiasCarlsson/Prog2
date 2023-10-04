@@ -4,12 +4,16 @@
 class Person{
 	public:
 		Person(int);
-		int get();
-		void set(int);
+		int getAge();
+		void setAge(int);
+		double getDecades();
+		int fib();
+
 	private:
 		int age;
+		int fib_helpf(int);
 	};
- 
+	
 Person::Person(int n){
 	age = n;
 	}
