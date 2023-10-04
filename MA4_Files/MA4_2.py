@@ -74,6 +74,8 @@ def main():
 	print(f'C++: {round(t2-t1,4)}')
 	print(f'Numba: {round(t3-t2,4)}')
 	print(f'Python: {round(t4-t3,4)}')
+	
+	graph()
 
 	#print(f.get())
 	#f.set(7)
