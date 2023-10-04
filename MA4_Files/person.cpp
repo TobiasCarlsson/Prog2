@@ -1,3 +1,4 @@
+
 #include <cstdlib>
 // Person class 
 
@@ -13,17 +14,9 @@ class Person{
 		int age;
 		int fib_helpf(int);
 	};
-	
-Person::Person(int n){
-	age = n;
-	}
- 
-int Person::get(){
-	return age;
-	}
- 
-void Person::set(int n){
-	age = n;
+
+Person::Person(int a){
+	age = a;
 	}
 
 int Person::fib(){
@@ -34,6 +27,7 @@ int Person::fib_helpf(int n){
 	if(n<=1){return n;}
 	return fib_helpf(n-1) + fib_helpf(n-2);
 	}
+
 int Person::getAge(){
 	return age;
 	}
