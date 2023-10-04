@@ -3,6 +3,9 @@
 #C++
 
 #MonteCarlo
+
+from MA4Files.person import Person
+
 import random
 import math
 import matplotlib.pyplot as plt
@@ -31,15 +34,21 @@ def fib_numba(n):
 	
 def main():
 	x = 30
-	t1 = pc()
-	print(fib_numba(x))
-	t2 = pc()
-	print(fib_py(x))
-	t3 = pc()
-	print(f'Numba: {round(t2-t1,4)}')
-	print(f'Python: {round(t3-t2,4)}')
 
-	#f = Person(5)
+	t1 = pc()
+	f = Person(x)
+
+	print(f.fib(x))
+	t2 = pc()
+	print(fib_numba(x))
+	t3 = pc()
+	print(fib_py(x))
+	t4 = pc()
+
+	print(f'C++: {round(t2-t1,4)}')
+	print(f'Numba: {round(t3-t2,4)}')
+	print(f'Python: {round(t4-t3,4)}')
+
 	#print(f.get())
 	#f.set(7)
 	#print(f.get())
