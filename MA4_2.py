@@ -1,8 +1,10 @@
 #!/usr/bin/env python3.9
 
-from person import Person
+from MA4Files.person import Person
 
 def main():
+
+	
 	f = Person(5)
 	print(f.get())
 	f.set(7)
