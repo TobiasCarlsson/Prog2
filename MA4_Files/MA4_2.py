@@ -37,8 +37,7 @@ def main():
 
 	t1 = pc()
 	f = Person(x)
-
-	print(f.fib(x))
+	print(f.fib())
 	t2 = pc()
 	print(fib_numba(x))
 	t3 = pc()
