@@ -39,12 +39,12 @@ def graph():
 	for i in x:
 		
 		t1 = pc()
-		f = Person(x)
-		print(f.fib())
+		f = Person(i)
+		f.fib()
 		t2 = pc()
-		print(fib_numba(i))
+		fib_numba(i)
 		t3 = pc()
-		print(fib_py(i))
+		fib_py(i)
 		t4 = pc()
 
 		y_cpp.append(t2-t1)
