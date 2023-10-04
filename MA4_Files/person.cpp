@@ -21,6 +21,15 @@ int Person::get(){
 void Person::set(int n){
 	age = n;
 	}
+	
+int Person::fib(){
+	return fib_helpf(getAge());
+	}
+
+int Person::fib_helpf(int n){
+	if(n<=1){return n;}
+	return fib_helpf(n-1) + fib_helpf(n-2);
+	}
 
 
 extern "C"{
