@@ -30,8 +30,35 @@ def fib_numba(n):
 	else:
 		return fib_numba(n-1) + fib_numba(n-2)
 
+def graph():
+	x = range(10,30)
+	y_cpp = []
+	y_numba = []
+	y_py = []
 
-	
+	for i in x:
+		
+		t1 = pc()
+		f = Person(x)
+		print(f.fib())
+		t2 = pc()
+		print(fib_numba(i))
+		t3 = pc()
+		print(fib_py(i))
+		t4 = pc()
+
+		y_cpp.append(t2-t1)
+		y_numba.append(t3-t2)
+		y_py.append(t4-t3)
+	plt.plot(x ,y_cpp, "r", label="C++")
+	plt.plot(x, y_numba, "g", label="Numba")
+	plt.plot(x, y_py, "b", label="py")
+
+	plt.xlabel('n')
+	plt.ylabel('t')
+	plt.savefig('Fib_TimeComparison.png')
+
+
 def main():
 	x = 30
 
@@ -51,6 +78,7 @@ def main():
 	#print(f.get())
 	#f.set(7)
 	#print(f.get())
+
 
 if __name__ == '__main__':
 	main()
