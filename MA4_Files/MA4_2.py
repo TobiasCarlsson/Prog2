@@ -4,7 +4,7 @@
 
 #MonteCarlo
 
-from MA4Files.person import Person
+from person import Person
 
 import random
 import math
