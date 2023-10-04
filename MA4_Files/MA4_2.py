@@ -14,29 +14,30 @@ import time
 #Numba
 from numba import njit
 
-@njit
-def fib_numba(n):
-	if n <= 1:
-		return n
-	else:
-		return(fib_py(n-1) + fib_py(n-2))
-
 def fib_py(n):
 	if n <= 1:
 		return n
 	else:
 		return(fib_py(n-1) + fib_py(n-2))
 	
+@njit
+def fib_numba(n):
+	if n<= 1:
+		return n
+	else:
+		return fib_numba(n-1) + fib_numba(n-2)
+
+
+	
 def main():
-	x = input("What is the fib num")
-	start_time = time.time()
-	fib_numba(x)
-	t_numba = start_time - time.time()
-	start_time = time.time()
-	fib_py(x)
-	t_py = start_time - time.time()
-	print(t_numba)
-	print(t_py)
+	x = 30
+	t1 = pc()
+	print(fib_numba(x))
+	t2 = pc()
+	print(fib_py(x))
+	t3 = pc()
+	print(f'Numba: {round(t2-t1,4)}')
+	print(f'Python: {round(t3-t2,4)}')
 
 	#f = Person(5)
 	#print(f.get())
