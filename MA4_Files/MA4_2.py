@@ -58,16 +58,17 @@ def graph(q,w):
 
 	plt.xlabel('n')
 	plt.ylabel('t')
-	plt.savefig(str(w) + 'Fib_TimeComparison.png')
+	plt.title('r = C++, g = Numba, b = Py')
+	plt.savefig(str(q) + "to" + str(w) + 'Fib_TimeComparison.png')
 
 def time47():
 	x = 47
 
 	t1 = pc()
 	f = Person(x)
-	print(f.fib())
+	print(f'C++: {f.fib()}')
 	t2 = pc()
-	print(fib_numba(x))
+	print(f'numba: {fib_numba(x)}')
 	t3 = pc()
 
 
@@ -79,7 +80,6 @@ def main():
 
 	graph(20,30)
 	time47()
-
 	graph(30,45)
 
 if __name__ == '__main__':
