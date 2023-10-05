@@ -58,7 +58,7 @@ def graph(q,w):
 
 	plt.xlabel('n')
 	plt.ylabel('t')
-	plt.savefig('Fib_TimeComparison.png'+ str(w))
+	plt.savefig(str(w) + 'Fib_TimeComparison.png')
 
 def time47():
 	x = 47
