@@ -31,25 +31,27 @@ def fib_numba(n):
 		return fib_numba(n-1) + fib_numba(n-2)
 
 def graph(x,y):
+	
 	z = range(x,y)
 	y_cpp = []
 	y_numba = []
 	y_py = []
 
-	for z in x:
+	for i in z:
 		
 		t1 = pc()
-		f = Person(z)
+		f = Person(i)
 		f.fib()
 		t2 = pc()
-		fib_numba(z)
+		fib_numba(i)
 		t3 = pc()
-		fib_py(z)
+		fib_py(i)
 		t4 = pc()
 
 		y_cpp.append(t2-t1)
 		y_numba.append(t3-t2)
 		y_py.append(t4-t3)
+
 	plt.plot(x ,y_cpp, "r", label="C++")
 	plt.plot(x, y_numba, "g", label="Numba")
 	plt.plot(x, y_py, "b", label="py")
@@ -77,7 +79,7 @@ def main():
 
 	graph(20,30)
 	time47()
-	
+
 	graph(30,45)
 
 if __name__ == '__main__':
