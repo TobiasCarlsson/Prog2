@@ -48,10 +48,7 @@ def estimate_pi(n):
     plt.show()
 
 def main():
-	#f = Person(5)
-	#print(f.get())
-	#f.set(7)
-	#print(f.get())
+
 	num_points = int(input("Enter the number of points to generate: "))
 	estimate_pi(num_points)
 

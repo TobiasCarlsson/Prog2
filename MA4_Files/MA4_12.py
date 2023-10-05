@@ -1,29 +1,49 @@
 import random
 import math
 import numpy as np
+import concurrent.futures as future
 
-def is_inside_hypersphere(point, d):
-    # Check if the point is inside the d-dimensional hypersphere
-    squared_sum = sum(x**2 for x in point)
-    return squared_sum <= 1
+def hypersphere(n,d):
+	#Filter, list comprehension
+	def lessThanOne(num):
+		if num <= 1:
+			return True
+		else:
+			return False
+	
+	samples_radii = [sum([random.uniform(-1,1)**2 for _ in range(d)]) for i in range(n)]
+	
+	c = len(list(filter(lessThanOne,samples_radii)))
 
-def monte_carlo_hypersphere(n, d):
-    points = np.random.rand(n, d)  # Generate n random points in d dimensions
-    
-    # Use filter and lambda to count points inside the hypersphere
-    inside_points = list(filter(lambda point: is_inside_hypersphere(point, d), points))
-    
-    # Calculate the volume of the hypersphere
-    estimated_volume = len(inside_points) / n * (2**d)
-    actual_volume = math.pi**(d/2) / math.gamma(d/2 + 1)
-    
-    return estimated_volume, actual_volume
+	print('dimensions: ',d,', samples: ', n,', nc: ', c,', approx: ', 2.0**d*c/n)
+	return 2.0**d * c/n
 
-if __name__ == "__main__":
-    n = int(input("Enter the number of random points (n): "))
-    d = int(input("Enter the number of dimensions (d): "))
-    
-    estimated_volume, actual_volume = monte_carlo_hypersphere(n, d)
-    
-    print(f"Estimated Volume: {estimated_volume}")
-    print(f"Actual Volume (using formula): {actual_volume}")
+def hypersphere_exact(d):
+	#Lambdafunktion
+	f = lambda x : math.pi**(x/2) / (math.gamma(x/2+1))
+	print('dimensions: ', d,', hypersphere_exact: ', f(d))
+	return f(d)
+
+def hypersphere_PP(n, d, proc):
+	with future.ProcessPoolExecutor() as ex:
+		processes = []
+		result = []
+		npp = n//proc
+		for _ in range(10):
+			p = ex.submit(hypersphere, npp, d)
+			processes.append(p)
+		for p in processes:
+			result.append(p.result())
+
+	print('dimensions: ',d,', samples: ', n,', processes: ', proc,', approx: ', sum(result)/proc )
+	return sum(result)/proc
+
+def main():
+	hypersphere(100000, 2)
+	hypersphere_exact(2)
+	
+	hypersphere(100000, 11)
+	hypersphere_exact(11)
+	
+if __name__ == '__main__':
+	main()
