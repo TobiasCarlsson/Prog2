@@ -30,14 +30,14 @@ def fib_numba(n):
 	else:
 		return fib_numba(n-1) + fib_numba(n-2)
 
-def graph(x,y):
+def graph(q,w):
 	
-	z = range(x,y)
+	x = range(q,w)
 	y_cpp = []
 	y_numba = []
 	y_py = []
 
-	for i in z:
+	for i in x:
 		
 		t1 = pc()
 		f = Person(i)
@@ -58,7 +58,7 @@ def graph(x,y):
 
 	plt.xlabel('n')
 	plt.ylabel('t')
-	plt.savefig('Fib_TimeComparison.png'+ y)
+	plt.savefig('Fib_TimeComparison.png'+ w)
 
 def time47():
 	x = 47
