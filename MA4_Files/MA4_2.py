@@ -92,7 +92,6 @@ def monte_carlo_hypersphere(n, d):
 
     return estimated_volume, actual_volume
 
-
 def Monte_carlo(n):    
     # Lists to store x and y coordinates of points
     x_inside = []
@@ -132,10 +131,6 @@ def Monte_carlo(n):
     # Save the plot as a PNG file
     plt.savefig(str(n) + "monte_carlo_pi.png")
     
-    # Display the plot
-    plt.show()
-
-
 def main():
     n = 100
     d = 100

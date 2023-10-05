@@ -3,7 +3,7 @@ import math
 import numpy as np
 import concurrent.futures as future
 
-def hypersphere(n,d):
+def hypersphere(n,d): # Without PPE
 	#Filter, list comprehension
 	def lessThanOne(num):
 		if num <= 1:
@@ -24,7 +24,8 @@ def hypersphere_exact(d):
 	print('dimensions: ', d,', hypersphere_exact: ', f(d))
 	return f(d)
 
-def hypersphere_PP(n, d, proc):
+def hypersphere_PP(n, d, proc): #with PPE
+	
 	with future.ProcessPoolExecutor() as ex:
 		processes = []
 		result = []
