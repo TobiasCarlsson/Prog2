@@ -77,6 +77,7 @@ def main():
 
 	graph(20,30)
 	time47()
+	
 	graph(30,45)
 
 if __name__ == '__main__':
