@@ -1,4 +1,9 @@
 #!/usr/bin/env python3.9
+#Student: Tobias Karlsson
+#Mail: tobias.karlsson.2002@student.uu.se
+#Reviewed by: Naser Shabani
+#Reviewed date: 20231005
+
 
 from person import Person
 
@@ -53,10 +58,12 @@ def graph(q,w):
     plt.plot(x, y_numba, "g", label="Numba")
     plt.plot(x, y_py, "b", label="py")
 
+    plt.set_yscale('log')
+
     plt.xlabel('n')
     plt.ylabel('Time (s)')
     plt.title('r = C++, g = Numba, b = Py')
-    plt.savefig(str(q) + "to" + str(w) + 'Fib_TimeComparison.png')
+    plt.savefig(str(q) + "to" + str(w) + 'logFib_TimeComparison.png')
 
 def time47():
     x = 47
@@ -68,7 +75,6 @@ def time47():
     print(f'numba: {fib_numba(x)}')
     t3 = pc()
 
-
     print(f'C++: {round(t2-t1,4)}')
     print(f'Numba: {round(t3-t2,4)}')
 
@@ -76,8 +82,8 @@ def time47():
     
 def main():
     graph(20,30)
-    time47()
-    graph(30,45)
+    #time47()
+    #graph(30,45)
 
     
 

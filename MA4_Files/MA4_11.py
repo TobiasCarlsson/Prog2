@@ -1,4 +1,8 @@
-#!/usr/bin/env python3.9
+#Student: Tobias Karlsson
+#Mail: tobias.karlsson.2002@student.uu.se
+#Reviewed by: Naser Shabani
+#Reviewed date: 20231005
+
 
 #from person import Person
 import random
@@ -46,7 +50,7 @@ def Monte_carlo(n):
 
 def main():
 
-    Monte_carlo(10000)
+    Monte_carlo(100000)
 
 
 

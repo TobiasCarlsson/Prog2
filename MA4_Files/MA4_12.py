@@ -1,7 +1,15 @@
+#Student: Tobias Karlsson
+#Mail: tobias.karlsson.2002@student.uu.se
+#Reviewed by: Naser Shabani
+#Reviewed date: 20231005
+
+
 import random
 import math
 import numpy as np
 import concurrent.futures as future
+from time import perf_counter as pc
+
 
 def hypersphere(n,d): # Without PPE
 	#Filter, list comprehension
@@ -40,11 +48,16 @@ def hypersphere_PP(n, d, proc): #with PPE
 	return sum(result)/proc
 
 def main():
-	hypersphere(100000, 2)
+	t1 = pc()
+	hypersphere(10000000, 11)
 	hypersphere_exact(2)
-	
-	hypersphere(100000, 11)
-	hypersphere_exact(11)
+	t2 = pc()
+	hypersphere_PP(10000000, 11, 10)
+	hypersphere_exact(2)
+	t3 = pc()
+
+	print('time No PPE', t2-t1)
+	print('time PPE', t3-t2)
 	
 if __name__ == '__main__':
 	main()
