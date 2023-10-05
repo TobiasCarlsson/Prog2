@@ -30,21 +30,21 @@ def fib_numba(n):
 	else:
 		return fib_numba(n-1) + fib_numba(n-2)
 
-def graph():
-	x = range(10,30)
+def graph(x,y):
+	z = range(x,y)
 	y_cpp = []
 	y_numba = []
 	y_py = []
 
-	for i in x:
+	for z in x:
 		
 		t1 = pc()
-		f = Person(i)
+		f = Person(z)
 		f.fib()
 		t2 = pc()
-		fib_numba(i)
+		fib_numba(z)
 		t3 = pc()
-		fib_py(i)
+		fib_py(z)
 		t4 = pc()
 
 		y_cpp.append(t2-t1)
@@ -56,11 +56,10 @@ def graph():
 
 	plt.xlabel('n')
 	plt.ylabel('t')
-	plt.savefig('Fib_TimeComparison.png')
+	plt.savefig('Fib_TimeComparison.png'+ x + y)
 
-
-def main():
-	x = 30
+def time47():
+	x = 47
 
 	t1 = pc()
 	f = Person(x)
@@ -68,19 +67,17 @@ def main():
 	t2 = pc()
 	print(fib_numba(x))
 	t3 = pc()
-	print(fib_py(x))
-	t4 = pc()
+
 
 	print(f'C++: {round(t2-t1,4)}')
 	print(f'Numba: {round(t3-t2,4)}')
-	print(f'Python: {round(t4-t3,4)}')
 	
-	graph()
 
-	#print(f.get())
-	#f.set(7)
-	#print(f.get())
+def main():
 
+	graph(20,30)
+	time47()
+	graph(30,45)
 
 if __name__ == '__main__':
 	main()
