@@ -53,13 +53,10 @@ def graph(q,w):
         y_cpp.append(t2-t1)
         y_numba.append(t3-t2)
         y_py.append(t4-t3)
-
     plt.plot(x ,y_cpp, "r", label="C++")
     plt.plot(x, y_numba, "g", label="Numba")
     plt.plot(x, y_py, "b", label="py")
-
-    plt.set_yscale('log')
-
+    plt.yscale('log')
     plt.xlabel('n')
     plt.ylabel('Time (s)')
     plt.title('r = C++, g = Numba, b = Py')
