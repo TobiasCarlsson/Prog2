@@ -75,9 +75,6 @@ def time47():
 
     
 def main():
-    n = 100
-    d = 100
-
     graph(20,30)
     time47()
     graph(30,45)
