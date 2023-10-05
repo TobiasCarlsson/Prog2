@@ -5,7 +5,7 @@ import random
 import matplotlib.pyplot as plt
 import math
 
-def estimate_pi(n):    
+def Monte_carlo(n):    
     # Lists to store x and y coordinates of points
     x_inside = []
     y_inside = []
@@ -42,15 +42,12 @@ def estimate_pi(n):
     plt.ylabel("y")
     
     # Save the plot as a PNG file
-    plt.savefig("monte_carlo_pi.png")
-    
-    # Display the plot
-    plt.show()
+    plt.savefig(str(n) + "monte_carlo_pi.png")
 
 def main():
 
-	num_points = int(input("Enter the number of points to generate: "))
-	estimate_pi(num_points)
+    Monte_carlo(10000)
+
 
 
 if __name__ == '__main__':

@@ -72,77 +72,16 @@ def time47():
     print(f'C++: {round(t2-t1,4)}')
     print(f'Numba: {round(t3-t2,4)}')
 
-def is_inside_hypersphere(point, d):
-    # Check if the point is inside the d-dimensional hypersphere
-    squared_sum = sum(x**2 for x in point)
-    return squared_sum <= 1
 
-def monte_carlo_hypersphere(n, d):
-    points = np.random.rand(n, d)  # Generate n random points in d dimensions
-    
-    # Use filter and lambda to count points inside the hypersphere
-    inside_points = list(filter(lambda point: is_inside_hypersphere(point, d), points))
-    
-    # Calculate the volume of the hypersphere
-    estimated_volume = len(inside_points) / n * (2**d)
-    actual_volume = math.pi**(d/2) / math.gamma(d/2 + 1)
-
-    print(f"Estimated Volume: {estimated_volume}")
-    print(f"Actual Volume (using formula): {actual_volume}")
-
-    return estimated_volume, actual_volume
-
-def Monte_carlo(n):    
-    # Lists to store x and y coordinates of points
-    x_inside = []
-    y_inside = []
-    x_outside = []
-    y_outside = []
-    inside_circle = 0
-    
-    for _ in range(n):
-        x = random.uniform(-1, 1)
-        y = random.uniform(-1, 1)
-        
-        # Check if the point is inside the unit circle
-        if x**2 + y**2 <= 1:
-            inside_circle += 1
-            x_inside.append(x)
-            y_inside.append(y)
-        else:
-            x_outside.append(x)
-            y_outside.append(y)
-    
-    # Approximate π using the Monte Carlo method
-    estimated_pi = 4 * inside_circle / n
-    
-    print("1. Number of points inside the circle (nc):", inside_circle)
-    print("2. Approximation of π ≈", estimated_pi)
-    print("3. Python's math.pi:", math.pi)
-    
-    # Create a scatter plot of the points
-    plt.figure(figsize=(6, 6))
-    plt.scatter(x_inside, y_inside, color='red', marker='.')
-    plt.scatter(x_outside, y_outside, color='blue', marker='.')
-    plt.title("Estimating π using Monte Carlo Simulation")
-    plt.xlabel("x")
-    plt.ylabel("y")
-    
-    # Save the plot as a PNG file
-    plt.savefig(str(n) + "monte_carlo_pi.png")
     
 def main():
     n = 100
     d = 100
-    num_points = 10000
-
-    Monte_carlo(num_points)
 
     graph(20,30)
     time47()
     graph(30,45)
 
-    estimated_volume, actual_volume = monte_carlo_hypersphere(n, d)
     
 
 if __name__ == '__main__':
