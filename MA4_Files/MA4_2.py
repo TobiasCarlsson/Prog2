@@ -77,13 +77,10 @@ def time47():
     print(f'C++: {round(t2-t1,4)}')
     print(f'Numba: {round(t3-t2,4)}')
 
-
-    
 def main():
     graph(20,30)
     time47()
     graph(30,45)
-
     
 
 if __name__ == '__main__':

@@ -11,8 +11,8 @@ import concurrent.futures as future
 from time import perf_counter as pc
 
 
-def hypersphere(n,d): # Without PPE
-	#Filter, list comprehension
+def hypersphere(n,d): # Without PPE, use filder and list comprehension
+	
 	def lessThanOne(num):
 		if num <= 1:
 			return True
@@ -27,13 +27,11 @@ def hypersphere(n,d): # Without PPE
 	return 2.0**d * c/n
 
 def hypersphere_exact(d):
-	#Lambdafunktion
 	f = lambda x : math.pi**(x/2) / (math.gamma(x/2+1))
 	print('dimensions: ', d,', hypersphere_exact: ', f(d))
 	return f(d)
 
 def hypersphere_PP(n, d, proc): #with PPE
-	
 	with future.ProcessPoolExecutor() as ex:
 		processes = []
 		result = []
@@ -59,5 +57,8 @@ def main():
 	print('time No PPE', t2-t1)
 	print('time PPE', t3-t2)
 	
+	#time difference running 10 *10^6 samples in 11 dimesion 
+    # Singel core 89s, using 10 cores 14.34s 
+
 if __name__ == '__main__':
 	main()
